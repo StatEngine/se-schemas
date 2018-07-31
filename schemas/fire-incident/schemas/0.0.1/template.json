@@ -1,0 +1,879 @@
+{
+  "template": "*fire-incident*",
+  "order": 10,
+  "settings": {
+   "number_of_shards": 2
+  },
+  "mappings": {
+    "fire-incident": {
+      "properties": {
+        "address": {
+          "properties": {
+            "address_id": {
+              "type": "keyword"
+            },
+            "address_line1": {
+              "type": "keyword"
+            },
+            "city": {
+              "type": "keyword"
+            },
+            "common_place_name": {
+              "type": "keyword"
+            },
+            "cross_street1": {
+              "type": "keyword"
+            },
+            "cross_street2": {
+              "type": "keyword"
+            },
+            "first_due": {
+              "type": "keyword"
+            },
+            "geohash": {
+              "type": "geo_point"
+            },
+            "latitude": {
+              "type": "double"
+            },
+            "longitude": {
+              "type": "double"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "number": {
+              "type": "keyword"
+            },
+            "postal_code": {
+              "type": "keyword"
+            },
+            "prefix_direction": {
+              "type": "keyword"
+            },
+            "response_zone": {
+              "type": "keyword"
+            },
+            "state": {
+              "type": "keyword"
+            },
+            "suffix_direction": {
+              "type": "keyword"
+            },
+            "type": {
+              "type": "keyword"
+            },
+            "units": {
+              "type": "keyword"
+            },
+            "battalion": {
+              "type": "keyword"
+            },
+            "distance_from_fire_department": {
+              "type": "double"
+            },
+            "building_number": {
+              "type": "keyword"
+            },
+            "suite": {
+              "type": "keyword"
+            },
+            "floor": {
+              "type": "keyword"
+            },
+            "elevation": {
+              "type": "integer"
+            },
+            "population_density": {
+              "type": "keyword"
+            },
+            "location": {
+              "properties": {
+                "parcel": {
+                  "properties": {
+                    "id": {
+                      "type": "keyword"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "dwelling_value": {
+                      "type": "double"
+                    },
+                    "land_value": {
+                      "type": "double"
+                    },
+                    "land_use": {
+                      "type": "keyword"
+                    },
+                    "land_area": {
+                      "type": "double"
+                    },
+                    "owner_name": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "census": {
+                  "properties": {
+                    "census_1990": {
+                      "type": "object",
+                      "properties": {
+                        "census_id": {
+                          "type": "keyword"
+                        },
+                        "tract": {
+                          "type": "keyword"
+                        },
+                        "block_group": {
+                          "type": "keyword"
+                        },
+                        "block": {
+                          "type": "keyword"
+                        },
+                        "description": {
+                          "type": "text"
+                        }
+                      }
+                    },
+                    "census_2000": {
+                      "properties": {
+                        "census_id": {
+                          "type": "keyword"
+                        },
+                        "tract": {
+                          "type": "keyword"
+                        },
+                        "block_group": {
+                          "type": "keyword"
+                        },
+                        "block": {
+                          "type": "keyword"
+                        },
+                        "description": {
+                          "type": "text"
+                        }
+                      }
+                    },
+                    "census_2010": {
+                      "properties": {
+                        "census_id": {
+                          "type": "keyword"
+                        },
+                        "tract": {
+                          "type": "keyword"
+                        },
+                        "block_group": {
+                          "type": "keyword"
+                        },
+                        "block": {
+                          "type": "keyword"
+                        },
+                        "description": {
+                          "type": "text"
+                        }
+                      }
+                    }
+                  }
+                },
+                "council_district": {
+                  "type": "keyword"
+                },
+                "precinct": {
+                  "type": "keyword"
+                },
+                "precinct_ward": {
+                  "type": "keyword"
+                },
+                "neighborhood": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "apparatus": {
+          "type": "nested",
+          "properties": {
+            "car_id": {
+              "type": "keyword"
+            },
+            "distance": {
+              "type": "double"
+            },
+            "extended_data": {
+              "properties": {
+                "event_duration": {
+                  "type": "long"
+                },
+                "response_duration": {
+                  "type": "long"
+                },
+                "travel_duration": {
+                  "type": "long"
+                },
+                "turnout_duration": {
+                  "type": "long"
+                }
+              }
+            },
+            "geohash": {
+              "type": "keyword"
+            },
+            "shift": {
+              "type": "keyword"
+            },
+            "station": {
+              "type": "keyword"
+            },
+            "unit_id": {
+              "type": "keyword"
+            },
+            "response_priority": {
+              "type": "keyword"
+            },
+            "staging_status": {
+              "type": "keyword"
+            },
+            "first_due": {
+              "type": "boolean"
+            },
+            "unit_status": {
+              "properties": {
+                "acknowledged": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "available_mobile": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "arrived": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "available": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "cleared": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "dispatched": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "enroute": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "in_quarters": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "patient_contact": {
+                  "properties": {
+                    "geohash": {
+                      "type": "geo_point"
+                    },
+                    "latitude": {
+                      "type": "double"
+                    },
+                    "longitude": {
+                      "type": "double"
+                    },
+                    "timestamp": {
+                      "type": "date"
+                    },
+                    "order": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            },
+            "unit_type": {
+              "type": "keyword"
+            }
+          }
+        },
+        "description": {
+          "properties": {
+            "air_monitoring_complete": {
+              "type": "date"
+            },
+            "command_established": {
+              "type": "date"
+            },
+            "comments": {
+              "type": "text"
+            },
+            "day_of_week": {
+              "type": "keyword"
+            },
+            "event_closed": {
+              "type": "date"
+            },
+            "event_id": {
+              "type": "keyword"
+            },
+            "event_opened": {
+              "type": "date"
+            },
+            "alarms": {
+              "type": "long"
+            },
+            "extended_data": {
+              "properties": {
+                "dispatch_duration": {
+                  "type": "long"
+                },
+                "event_duration": {
+                  "type": "long"
+                },
+                "response_time": {
+                  "type": "long"
+                }
+              }
+            },
+            "first_unit_arrived": {
+              "type": "date"
+            },
+            "first_unit_dispatched": {
+              "type": "date"
+            },
+            "first_unit_enroute": {
+              "type": "date"
+            },
+            "psap_answer_time": {
+              "type": "date"
+            },
+            "hour_of_day": {
+              "type": "long"
+            },
+            "incident_number": {
+              "type": "keyword"
+            },
+            "loi_search_complete": {
+              "type": "date"
+            },
+            "loss_stopped": {
+              "type": "date"
+            },
+            "primary_search_complete": {
+              "type": "date"
+            },
+            "rehab_established": {
+              "type": "date"
+            },
+            "ric_established": {
+              "type": "date"
+            },
+            "secondary_search_complete": {
+              "type": "date"
+            },
+            "effective_response_force_arrived": {
+              "type": "date"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "suppressed": {
+              "type": "boolean"
+            },
+            "subtype": {
+              "type": "keyword"
+            },
+            "type": {
+              "type": "keyword"
+            },
+            "water_on_fire": {
+              "type": "date"
+            },
+            "category": {
+              "type": "keyword"
+            },
+            "priority": {
+              "type": "keyword"
+            },
+            "aid": {
+              "type": "keyword"
+            }
+          }
+        },
+        "fire_department": {
+          "properties": {
+            "fd_id": {
+              "type": "keyword"
+            },
+            "firecares_id": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "shift": {
+              "type": "keyword"
+            },
+            "state": {
+              "type": "keyword"
+            },
+            "timezone": {
+              "type": "keyword"
+            }
+          }
+        },
+        "psap": {
+          "properties": {
+            "psap_id": {
+              "type": "keyword"
+            },
+            "psap_name": {
+              "type": "keyword"
+            }
+          }
+        },
+        "weather": {
+          "properties": {
+            "currently": {
+              "properties": {
+                "apparentTemperature": {
+                  "type": "float"
+                },
+                "cloudCover": {
+                  "type": "float"
+                },
+                "dewPoint": {
+                  "type": "float"
+                },
+                "humidity": {
+                  "type": "float"
+                },
+                "icon": {
+                  "type": "keyword"
+                },
+                "nearestStormBearing": {
+                  "type": "float"
+                },
+                "nearestStormDistance": {
+                  "type": "float"
+                },
+                "ozone": {
+                  "type": "float"
+                },
+                "precipIntensity": {
+                  "type": "float"
+                },
+                "precipProbability": {
+                  "type": "float"
+                },
+                "precipType": {
+                  "type": "keyword"
+                },
+                "pressure": {
+                  "type": "float"
+                },
+                "summary": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "temperature": {
+                  "type": "float"
+                },
+                "time": {
+                  "type": "date"
+                },
+                "uvIndex": {
+                  "type": "float"
+                },
+                "visibility": {
+                  "type": "float"
+                },
+                "windBearing": {
+                  "type": "float"
+                },
+                "windGust": {
+                  "type": "float"
+                },
+                "windSpeed": {
+                  "type": "float"
+                }
+              }
+            },
+            "daily": {
+              "properties": {
+                "apparentTemperatureHigh": {
+                  "type": "float"
+                },
+                "apparentTemperatureHighTime": {
+                  "type": "date"
+                },
+                "apparentTemperatureLow": {
+                  "type": "float"
+                },
+                "apparentTemperatureLowTime": {
+                  "type": "date"
+                },
+                "cloudCover": {
+                  "type": "float"
+                },
+                "dewPoint": {
+                  "type": "float"
+                },
+                "humidity": {
+                  "type": "float"
+                },
+                "icon": {
+                  "type": "keyword"
+                },
+                "moonPhase": {
+                  "type": "float"
+                },
+                "ozone": {
+                  "type": "float"
+                },
+                "precipAccumulation": {
+                  "type": "float"
+                },
+                "precipIntensity": {
+                  "type": "float"
+                },
+                "precipIntensityMax": {
+                  "type": "float"
+                },
+                "precipIntensityMaxTime": {
+                  "type": "date"
+                },
+                "precipProbability": {
+                  "type": "float"
+                },
+                "precipType": {
+                  "type": "keyword"
+                },
+                "pressure": {
+                  "type": "float"
+                },
+                "summary": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "sunriseTime": {
+                  "type": "date"
+                },
+                "sunsetTime": {
+                  "type": "date"
+                },
+                "temperature": {
+                  "type": "float"
+                },
+                "temperatureHigh": {
+                  "type": "float"
+                },
+                "temperatureHighTime": {
+                  "type": "date"
+                },
+                "temperatureLow": {
+                  "type": "float"
+                },
+                "temperatureLowTime": {
+                  "type": "date"
+                },
+                "time": {
+                  "type": "date"
+                },
+                "uvIndex": {
+                  "type": "float"
+                },
+                "uvIndexTime": {
+                  "type": "date"
+                },
+                "visibility": {
+                  "type": "float"
+                },
+                "windBearing": {
+                  "type": "float"
+                },
+                "windGust": {
+                  "type": "float"
+                },
+                "windGustTime": {
+                  "type": "date"
+                },
+                "windSpeed": {
+                  "type": "float"
+                }
+              }
+            }
+          }
+        },
+        "version": {
+          "type": "keyword"
+        },
+        "NFPA": {
+          "properties": {
+            "alarm_answering_duration_seconds": {
+              "type": "float"
+            },
+            "alarm_processing_duration_seconds": {
+              "type": "float"
+            },
+            "turnout_durations_seconds": {
+              "type": "float"
+            },
+            "first_engine_travel_duration_seconds": {
+              "type": "float"
+            },
+            "type": {
+              "type": "keyword"
+            }
+          }
+        },
+        "durations": {
+          "properties": {
+            "alarm_answer": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "alarm_processing": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "alarm_handling": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "turnout": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "travel": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "response": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "total_response": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "total_event": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "water_on_fire_from_arrival": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "primary_search_complete_from_arrival": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            },
+            "command_established_from_arrival": {
+              "properties": {
+                "seconds": {
+                  "type": "float"
+                },
+                "minutes": {
+                  "type": "float"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

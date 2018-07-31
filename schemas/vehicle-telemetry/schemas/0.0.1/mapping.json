@@ -1,0 +1,78 @@
+{
+  "mappings": {
+    "vehicle-telemetry": {
+      "properties": {
+        "apparatus": {
+          "properties": {
+            "car_id": {
+              "type": "keyword"
+            },
+            "unit_id": {
+              "type": "keyword"
+            },
+            "unit_status": {
+              "type": "keyword"
+            }
+          }
+        },
+        "fire_department": {
+          "properties": {
+            "fd_id": {
+              "type": "keyword"
+            },
+            "firecares_id": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "state": {
+              "type": "keyword"
+            },
+            "timezone": {
+              "type": "keyword"
+            }
+          }
+        },
+        "incident": {
+          "properties": {
+            "incident_number": {
+              "type": "keyword"
+            }
+          }
+        },
+        "telemetry": {
+          "properties": {
+            "altitude": {
+              "type": "float"
+            },
+            "bearing": {
+              "type": "float"
+            },
+            "geohash": {
+              "type": "geo_point"
+            },
+            "latitude": {
+              "type": "float"
+            },
+            "longitude": {
+              "type": "float"
+            },
+            "speed": {
+              "type": "float"
+            },
+            "speed_units": {
+              "type": "keyword"
+            },
+            "timestamp": {
+              "type": "date"
+            }
+          }
+        },
+        "version": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}

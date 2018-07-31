@@ -1,0 +1,10 @@
+{
+  "presets": [
+    ["env", {
+      "useBuiltIns": true,
+      "targets": {
+        "node": "6.10"
+      }
+    }]
+  ]
+}

@@ -1,0 +1,890 @@
+{
+  "name": "fire-incident-json",
+  "version": "0.0.1",
+  "description": "This specification attempts to create foundation for a standard for representing data about a fire incident in JSON.",
+  "type": "object",
+  "required": [
+    "description",
+    "fire_department",
+    "address",
+    "apparatus",
+    "version"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": "object",
+      "required": [
+        "event_opened",
+        "event_closed",
+        "type"
+      ],
+      "properties": {
+        "day_of_week": {
+          "type": "string",
+          "description": "The full name of the day of the week in local time.",
+          "enum": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ]
+        },
+        "incident_number": {
+          "description": "Local unique identifier assigned to this incident.",
+          "type": "string"
+        },
+        "event_opened": {
+          "type": "string",
+          "description": "Timezone-aware date and time the call was opened in the CAD, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "type": {
+          "description": "Local incident type: typically Fire/EMS.",
+          "type": "string"
+        },
+        "comments": {
+          "description": "Event comments, typically recorded in a CAD.",
+          "type": ["string", "null"]
+        },
+        "first_unit_enroute": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "Timezone-aware date and time for first unit en-route, expressed in as an ISO-8601 string."
+        },
+        "first_unit_arrived": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time for first arriving unit, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "initial_building_entry": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time that initial entry was made into the structure, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "category": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Incident Category Definition type.",
+          "enum": ["FIRE", "EMS", "OTHER"]
+        },
+        "priority": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Incident Priority for Incident category type."
+        },
+        "water_on_fire": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time for water on fire, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "walk_around_completed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when walk around was completed, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "command_established": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when command was established, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "ric_established": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when the rapid intervention crew was established, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "rehab_established": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when rehab was established, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "utilities_secured": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when utilities were secured, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "primary_search_complete": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when primary search was completed, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "secondary_search_complete": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when secondary search was completed, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "air_monitoring_complete": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when air monitoring was completed, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "loss_stopped": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when loss stopped, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "fire_watch_initiated": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when a fire watch was initiated, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "psap_answer_time": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when the call for the incident was received by the PSAP, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "event_closed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time the call was closed in the CAD, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        },
+        "subtype": {
+          "description": "Local incident subtype.",
+          "type": "string"
+        },
+        "active": {
+          "description": "Active incident flag.",
+          "type": "boolean"
+        },
+        "suppressed": {
+          "description": "Suppressed flag.",
+          "type": "boolean"
+        },
+        "subtype": {
+          "description": "Local incident subtype.",
+          "type": "string"
+        },
+        "hour_of_day": {
+          "maximum": 23,
+          "type": "integer",
+          "minimum": 0,
+          "description": "The hour of the day in local time, expressed as an integer between 0 and 23."
+        },
+        "first_unit_dispatched": {
+          "description": "Timezone-aware date and time for first unit dispatched, expressed in as an ISO-8601 string.",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "loi_search_complete": {
+          "description": "Timezone-aware date and time when the location of interest search completed, expressed in as an ISO-8601 string",
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extended_data": {
+          "$ref": "#/definitions/extended_data"
+        },
+        "event_id": {
+          "type": "string",
+          "description": "Local unique identifier assigned to this event."
+        },
+        "aid": {
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "mutual_aid_received",
+            "automatic_aid_received",
+            "mutual_aid_given",
+            "automatic_aid_given",
+            "other_aid_given",
+            "none"
+          ],
+          "description": "Mutual aid status for the incident (given, received, none)."
+        },
+        "alarms": {
+          "description": "The number of alarms for the incident.",
+          "type": "integer"
+        },
+        "effective_response_force_arrived": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Timezone-aware date and time when the effective firefighting force arrived, expressed in as an ISO-8601 string.",
+          "format": "date-time"
+        }
+      }
+    },
+    "fire_department": {
+      "properties": {
+        "fd_id": {
+          "description": "The NFIRS FD ID for the Fire Department.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the Fire Department.",
+          "type": "string"
+        },
+        "state": {
+          "description": "The state that the Fire Department is within.",
+          "type": "string"
+        },
+        "firecares_id": {
+          "type": "string",
+          "description": "FireCARES ID for the Fire Department."
+        },
+        "timezone": {
+          "description": "The timezone of this department.",
+          "type": "string",
+          "enum": [
+            "US/Alaska",
+            "US/Aleutian",
+            "US/Arizona",
+            "US/Central",
+            "US/East-Indiana",
+            "US/Eastern",
+            "US/Hawaii",
+            "US/Indiana-Starke",
+            "US/Michigan",
+            "US/Mountain",
+            "US/Pacific",
+            "US/Pacific-New",
+            "US/Samoa",
+            "UTC"
+          ]
+        },
+        "shift": {
+          "description": "The department-wide on duty at the time of the incident.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "required": [
+        "fd_id",
+        "firecares_id",
+        "name",
+        "state",
+        "timezone"
+      ]
+    },
+    "apparatus": {
+      "items": {
+        "properties": {
+          "distance": {
+            "description": "The number of miles this apparatus was from the incident location at dispatch.",
+            "type": "number"
+          },
+          "extended_data": {
+            "$ref": "#/definitions/extended_data"
+          },
+          "first_due": {
+            "description": "Boolean indicating if the unit is first due.",
+            "type": "boolean"
+          },
+          "geohash": {
+            "$ref": "#/definitions/geohash"
+          },
+          "shift": {
+            "description": "The on this apparatus at the time of the incident.",
+            "type": "string"
+          },
+          "personnel": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "description": "The position of the employee on the apparatus.",
+                  "type": "string"
+                },
+                "radio": {
+                  "type": ["string", "null"],
+                  "description": "The radio id assigned to employee for this incident."
+                },
+                "employee_id": {
+                  "description": "Local unique identifier assigned to this employee.",
+                  "type": "string"
+                },
+                "first_name": {
+                  "description": "The first name of the employee on the apparatus.",
+                  "type": "string"
+                },
+                "last_name": {
+                  "description": "The last name of the employee on the apparatus.",
+                  "type": "string"
+                },
+                "middle_initial": {
+                  "description": "The middle initial of the employee on the apparatus.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "unit_status": {
+            "type": "object",
+            "description": "Timestamps and locations for this apparatus.",
+            "properties": {
+              "arrived": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "available": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "patient_contact": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "acknowledged": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "transport_started": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "transport_arrived": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "enroute": {
+                "$ref": "#/definitions/unit_status"
+              },
+              "dispatched": {
+                "$ref": "#/definitions/unit_status"
+              }
+            }
+          },
+          "unit_id": {
+            "description": "The unit identifier assigned to this apparatus. Example: E525",
+            "type": "string"
+          },
+          "station": {
+            "description": "Local identifier of the station this unit responds from.",
+            "type": "string"
+          },
+          "car_id": {
+            "type": "string",
+            "description": "Local unique identifier assigned to this apparatus."
+          },
+          "response_priority":{
+            "type": "string",
+            "description": "Unit specific Priority identifier for this apparatus."
+          },
+          "staging_status":{
+            "type": "string",
+            "description": "Unit specific status identifier for this apparatus."
+          },
+          "unit_type": {
+            "enum": [
+              "Engine",
+              "Truck/Aerial",
+              "Quint",
+              "Tanker/Pumper Combination",
+              "Brush Truck",
+              "ARFF",
+              "Dozer /Plow",
+              "Tractor",
+              "Tanker/Tender",
+              "Aircraft fixed-wing",
+              "Helitanker",
+              "Helicopter",
+              "Aircraft (Other)",
+              "Fireboat with Pump",
+              "Boat no Pump",
+              "Marine Equipment (Other)",
+              "Breathing Apparatus Support",
+              "Light and Air Unit",
+              "Rescue Unit",
+              "USAR",
+              "High Angle Rescue",
+              "BLS",
+              "ALS",
+              "Mobile Command Post",
+              "Chief Officer",
+              "Hazmat Unit",
+              "Type I Hand Crew (Wildland)",
+              "Type II Hand Crew (Wildland)",
+              "Other Apparatus",
+              "Support Unit",
+              "Safety Officer",
+              "Foam Unit",
+              "Unknown"
+            ],
+            "type": "string",
+            "description": "The type of apparatus."
+          }
+        },
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "address": {
+      "required": [
+        "address_line1",
+        "state"
+      ],
+      "type": "object",
+      "properties": {
+        "geohash": {
+          "$ref": "#/definitions/geohash"
+        },
+        "prefix_direction": {
+          "type": ["string", "null"],
+          "description": "The prefix direction of the incident location."
+        },
+        "postal_code": {
+          "type": "string",
+          "description": "The zip code associated with the incident address."
+        },
+        "cross_street1": {
+          "type": "string",
+          "description": "The name of the first incident cross street."
+        },
+        "type": {
+          "type": "string",
+          "description": "The street address type (ie ST, RD)"
+        },
+        "cross_street2": {
+          "description": "The name of the second incident cross street.",
+          "type": "string"
+        },
+        "address_line1": {
+          "description": "Street address for the incident location.",
+          "type": "string"
+        },
+        "first_due": {
+          "type": "string",
+          "description": "The apparatus station which is expected to be the first unit to arrive at the scene."
+        },
+        "battalion": {
+          "type": ["string", "null"],
+          "description": "The battalion of the incident location."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state associated with the incident location."
+        },
+        "suffix_direction": {
+          "description": "The suffix direction of the incident location.",
+          "type": ["string", "null"]
+        },
+        "city": {
+          "description": "The city associated with the incident location.",
+          "type": "string"
+        },
+        "response_zone": {
+          "type": "string",
+          "description": "The name of the geographical response area, also commonly referred to as box."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "The latitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system."
+        },
+        "longitude": {
+          "description": "The longitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system.",
+          "type": "number"
+        },
+        "number": {
+          "type": "string",
+          "description": "The number portion only of the incident street address."
+        },
+        "address_id": {
+          "description": "Local unique identifier assigned to this address.",
+          "type": ["string", "null"]
+        },
+        "common_place_name": {
+          "type": ["string", "null"],
+          "description": "A commonplace name for the incident location."
+        },
+        "name": {
+          "type": "string",
+          "description": "The street name of the incident location."
+        },
+        "distance_from_fire_department": {
+          "description": "The distance from the fire department to the emergency.",
+          "type": "number"
+        },
+        "building_number": {
+          "description": "The building number.",
+          "type": "string"
+        },
+        "suite": {
+          "description": "The suite or apartment number.",
+          "type": "string"
+        },
+        "floor": {
+          "description": "The building floor number.",
+          "type": "string"
+        },
+        "elevation": {
+          "description": "Height in feet above sea level.",
+          "type": "number"
+        },
+        "population_density": {
+          "description": "Population per unit area definitions such Urban, Suburban, Rural and Wildland.",
+          "type": "string",
+          "enum": ["Urban", "Suburban", "Rural", "Wildland"]
+        },
+        "location": {
+          "properties": {
+            "parcel":{
+              "properties":{
+                "id": {
+                  "description": "Parcel ID from the Local Parcel Database",
+                  "type": ["string", "null"]
+                },
+                "name": {
+                  "description": "Parcel Name from the Local Parcel Database",
+                  "type": ["string", "null"]
+                },
+                "dwelling_value": {
+                  "description": "Parcel value in dollars for dwelling buildings from the Local Parcel Database",
+                  "type": ["number"]
+                },
+                "land_value": {
+                  "description": "Parcel value in dollars for land from the Local Parcel Database",
+                  "type": ["number", "null"]
+                },
+                "land_use": {
+                  "description": "Parcel land use string from the Local Parcel Database",
+                  "type": ["string", "null"]
+                },
+                "owner_name": {
+                  "description": "Parcel Owner Name",
+                  "type": ["string", "null"]
+                },
+                "land_area": {
+                  "description": "Parcel area in sq ft from the Local Parcel Database",
+                  "type": ["number", "null"]
+                }
+              }
+            },
+            "census":{
+              "type": "object",
+              "properties": {
+                "census_1990": {
+                  "$ref": "#/definitions/censusDataforYear"
+                },
+                "census_2000": {
+                  "$ref": "#/definitions/censusDataforYear"
+                },
+                "census_2010": {
+                  "$ref": "#/definitions/censusDataforYear"
+                }
+              }
+            },
+            "council_district": {
+              "description": "Council District at address location.",
+              "type": ["string", "null"]
+            },
+            "precinct_ward": {
+              "description": "Precint Ward at address location.",
+              "type": ["string", "null"]
+            },
+            "precinct": {
+              "description": "Precint at address location.",
+              "type": ["string", "null"]
+            },
+            "neighborhood": {
+              "description": "neighborhood location key for incident.",
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    "psap": {
+      "type": "object",
+      "properties": {
+        "psap_id": {
+          "type": "string"
+        },
+        "psap_name": {
+          "type": "string"
+        }
+      }
+    },
+    "weather": {
+      "type": "object",
+      "properties": {
+        "currently": {
+          "$ref": "#/definitions/weatherDataPoint"
+        },
+        "daily": {
+          "$ref": "#/definitions/weatherDataPoint"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "extended_data": {
+      "type": "object",
+      "description": "Object used to store vendor-specific/non-standard data."
+    },
+    "geohash": {
+      "type": "string",
+      "description": "Geohash of the incident location, precision 12."
+    },
+    "unit_status": {
+      "type": "object",
+      "description": "The location of the apparatus and timestamp of the status.",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "description": "The latitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system."
+        },
+        "longitude": {
+          "description": "The longitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system.",
+          "type": "number"
+        },
+        "timestamp": {
+          "format": "date-time",
+          "description": "Timezone-aware date and time of status, expressed in as an ISO-8601 string.",
+          "type": "string"
+        },
+        "geohash": {
+          "$ref": "#/definitions/geohash"
+        },
+        "order": {
+          "description": "The order in relation to other apparatus on the call. For example, 1 indicates the unit was first arrived",
+          "type": "number"
+        }
+      }
+    },
+    "censusDataforYear": {
+      "type": "object",
+      "description": "Indivudal object for Census that will be used for each decade year",
+      "properties": {
+        "census_id": {
+          "description": "Census ID from the Local Census Database",
+          "type": ["string", "null"]
+        },
+        "tract": {
+          "description": "Tract Name from the Local Census Database",
+          "type": ["string", "null"]
+        },
+        "block_group": {
+          "description": "Block group from the Local Census Database",
+          "type": ["string", "null"]
+        },
+        "block": {
+          "description": "Block from the Local Census Database",
+          "type": ["string", "null"]
+        },
+        "description": {
+          "description": "Census description use string from the Local Census Database",
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "weatherDataPoint": {
+      "type": "object",
+      "description": "Weather data point",
+      "properties": {
+        "apparentTemperature": {
+          "type": "number",
+          "description": "The apparent (or 'feels like') temperature in degrees Fahrenheit."
+        },
+        "apparentTemperatureHigh": {
+          "type": "number",
+          "description": "The daytime high apparent temperature."
+        },
+        "apparentTemperatureHighTime": {
+          "format": "date-time",
+          "description": "Timezone-aware date and time of apparent temperature high, expressed in as an ISO-8601 string."
+        },
+        "apparentTemperatureLow": {
+          "type": "number",
+          "description": "The overnight low apparent temperature."
+        },
+        "apparentTemperatureLowTime": {
+          "format": "date-time",
+          "description": "Timezone-aware date and time of apparent temperature low, expressed in as an ISO-8601 string."
+        },
+        "cloudCover": {
+          "type": "number",
+          "description": "The percentage of sky occluded by clouds, between 0 and 1, inclusive."
+        },
+        "dewPoint": {
+          "type": "number",
+          "description": "The dew point in degrees Fahrenheit."
+        },
+        "humidity": {
+          "type": "number",
+          "description": "The relative humidity, between 0 and 1, inclusive."
+        },
+        "icon": {
+          "type": "string",
+          "description": "A machine-readable text summary suitable for selecting an icon for display."
+        },
+        "moonPhase": {
+          "type": "number",
+          "description": "The fractional part of the lunation number during the given day: a value of 0 corresponds to a new moon, 0.25 to a first quarter moon, 0.5 to a full moon, and 0.75 to a last quarter moon. (The ranges in between these represent waxing crescent, waxing gibbous, waning gibbous, and waning crescent moons, respectively.)"
+        },
+        "nearestStormBearing": {
+          "type": "number",
+          "description": "The approximate direction of the nearest storm in degrees, with true north at 0° and progressing clockwise. (If nearestStormDistance is zero, then this value will not be defined.)"
+        },
+        "ozone": {
+          "type": "number",
+          "description": "The columnar density of total atmospheric ozone at the given time in Dobson units."
+        },
+        "precipAccumulation": {
+          "type": "number",
+          "description": "The amount of snowfall accumulation expected to occur, in inches.  (If no snowfall is expected, this property will not be defined.)"
+        },
+        "precipIntensity": {
+          "type": "number",
+          "description": "The intensity (in inches of liquid water per hour) of precipitation occurring at the given time. This value is conditional on probability (that is, assuming any precipitation occurs at all) for minutely data points, and unconditional otherwise."
+        },
+        "precipIntensityMax": {
+          "type": "number",
+          "description": "The maximum value of precipIntensity during a given day."
+        },
+        "precipIntensityMaxTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of maximum percipiation intensity, expressed in as an ISO-8601 string."
+        },
+        "precipProbability": {
+          "type": "number",
+          "description": "The probability of precipitation occurring, between 0 and 1, inclusive."
+        },
+        "precipType": {
+          "type": "string",
+          "description": "The type of precipitation occurring at the given time.",
+          "enum": [
+            "rain",
+            "snow",
+            "sleet"
+          ]
+        },
+        "pressure": {
+          "type": "number",
+          "description": "The sea-level air pressure in millibars."
+        },
+        "summary": {
+          "type": "string",
+          "description": "A human-readable text summary."
+        },
+        "sunriseTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when the sun will rise during a given day, expressed in as an ISO-8601 string."
+        },
+        "sunsetTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when the sun will set during a given day, expressed in as an ISO-8601 string."
+        },
+        "temperature": {
+          "type": "number",
+          "description": "The air temperature in degrees Fahrenheit."
+        },
+        "temperatureHigh": {
+          "type": "number",
+          "description": "The daytime high temperature."
+        },
+        "temperatureHighTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when daytime high temperature occurs, expressed in as an ISO-8601 string."
+        },
+        "temperatureLow": {
+          "type": "number",
+          "description": "The overnight low temperature."
+        },
+        "temperatureLowTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when daytime low temperature occurs, expressed in as an ISO-8601 string."
+        },
+        "time": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of weather collection, expressed in as an ISO-8601 string."
+        },
+        "uvIndex": {
+          "type": "number",
+          "description": "The UV index."
+        },
+        "uvIndexTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when max uv index occurs, expressed in as an ISO-8601 string."
+        },
+        "visibility": {
+          "type": "number",
+          "description": "The average visibility in miles, capped at 10 miles."
+        },
+        "windBearing": {
+          "type": "number",
+          "description": "The direction that the wind is coming from in degrees, with true north at 0 degrees and progressing clockwise."
+        },
+        "windGust": {
+          "type": "number",
+          "description": "The wind gust speed in miles per hour."
+        },
+        "windGustTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Timezone-aware date and time of when max wind gust occurs, expressed in as an ISO-8601 string."
+        },
+        "windSpeed": {
+          "type": "number",
+          "description": "The wind speed in miles per hour."
+        }
+      }
+    }
+  }
+}

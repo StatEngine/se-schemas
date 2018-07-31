@@ -1,0 +1,141 @@
+{
+  "name": "vehicle-telemetry",
+  "version": "0.0.1",
+  "description": "This specification represents data of emergency vehicle locations in JSON.",
+  "type": "object",
+  "properties": {
+    "fire_department": {
+      "properties": {
+        "fd_id": {
+          "description": "The NFIRS FD ID for the Fire Department.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the Fire Department.",
+          "type": "string"
+        },
+        "state": {
+          "description": "The state that the Fire Department is within.",
+          "type": "string"
+        },
+        "firecares_id": {
+          "type": "string",
+          "description": "FireCARES ID for the Fire Department."
+        },
+        "timezone": {
+          "description": "The timezone of this department.",
+          "type": "string",
+          "enum": [
+            "US/Alaska",
+            "US/Aleutian",
+            "US/Arizona",
+            "US/Central",
+            "US/East-Indiana",
+            "US/Eastern",
+            "US/Hawaii",
+            "US/Indiana-Starke",
+            "US/Michigan",
+            "US/Mountain",
+            "US/Pacific",
+            "US/Pacific-New",
+            "US/Samoa",
+            "UTC"
+          ]
+        },
+        "shift": {
+          "description": "The department-wide on duty at the time of the incident.",
+          "type": "string"
+        },
+        "alarms": {
+          "description": "The number of alarms for the incident.",
+          "type": "integer"
+        }
+      },
+      "type": "object",
+      "required": [
+        "fd_id",
+        "firecares_id",
+        "name",
+        "state",
+        "timezone"
+      ]
+    },
+    "apparatus": {
+      "properties": {
+        "unit_status": {
+          "description": "The status of the vehicle.",
+          "type": "string"
+        },
+        "car_id": {
+          "type": "string",
+          "description": "Local unique identifier assigned to this apparatus."
+        },
+        "unit_id": {
+          "description": "The unit identifier assigned to this apparatus. Example: E525",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "required": [
+        "unit_id"
+      ]
+    },
+    "telemetry": {
+      "properties": {
+        "timestamp": {
+          "format": "date-time",
+          "description": "Timezone-aware date and time of status, expressed in as an ISO-8601 string.",
+          "type": "string"
+        },
+        "address_line1": {
+          "description": "Street address of the vehicle location.",
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "The latitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system."
+        },
+        "longitude": {
+          "description": "The longitudinal coordinate of the location as decimal degrees in the WGS84 coordinate system.",
+          "type": "number"
+        },
+        "geohash": {
+          "type": "string",
+          "description": "Geohash of the incident location, precision 12."
+        },
+        "speed": {
+          "description": "Vehicle's speed.",
+          "type": "number"
+        },
+        "speed_units": {
+          "description": "Units for speed.",
+          "type": "string",
+          "enum": ["mph", "kph"]
+        },
+        "bearing": {
+          "description": "Direction of travel represented in decimal degrees.",
+          "type": "number"
+        },
+        "altitude": {
+          "description": "Altitude of vehicle represented in feet above sea level.",
+          "type": "number"
+        }
+      },
+      "type": "object",
+      "required": [
+        "timestamp",
+        "latitude",
+        "longitude"
+      ]
+    },
+    "incident": {
+      "properties": {
+        "incident_number": {
+          "description": "Local unique identifier assigned to this incident.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

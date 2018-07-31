@@ -1,0 +1,37 @@
+{
+  "name": "@statengine/schemas",
+  "version": "0.0.6",
+  "description": "Data schemas for the public safety organizations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register ./test/*/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProminentEdge/se-schemas.git"
+  },
+  "keywords": [
+    "schemas",
+    "public",
+    "safety",
+    "json"
+  ],
+  "author": "Prominent Edge",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ProminentEdge/se-schemas/issues"
+  },
+  "devDependencies": {
+    "ajv": "^6.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
+    "babel-tap": "^5.0.0",
+    "chai": "^4.1.0"
+  },
+  "homepage": "https://github.com/ProminentEdge/se-schemas#readme",
+  "dependencies": {
+    "moment": "^2.21.0"
+  }
+}
